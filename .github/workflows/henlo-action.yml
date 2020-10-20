@@ -1,0 +1,8 @@
+# A trivial action. Just for testing.
+name: henlo-actions
+on: [push]
+jobs:
+  henlo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo henlo
