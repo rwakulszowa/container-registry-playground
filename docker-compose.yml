@@ -1,0 +1,16 @@
+# Default docker-compose file.
+# Nothing fancy, good for regular use.
+version: "3.8"
+services:
+    client:
+        build:
+            context: ./client/
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+    server:
+        build:
+            context: ./server/
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
