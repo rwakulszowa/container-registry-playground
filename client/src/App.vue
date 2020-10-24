@@ -1,5 +1,5 @@
 <template>
-  <Henlo msg="Henlo from the client." />
+  <Henlo clientMessage="Henlo from the client." />
 </template>
 
 <script>
