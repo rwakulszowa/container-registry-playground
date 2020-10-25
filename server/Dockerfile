@@ -2,7 +2,7 @@
 FROM node:14-alpine
 
 # Create app directory. This is where we'll store all stuff.
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy the package*.json files before copying source code.
 # This improves build times (docker layers, and stuff).

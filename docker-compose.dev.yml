@@ -27,7 +27,7 @@ services:
         volumes:
           # Same as above.
           # See comments in client-dev for details.
-          # There's no anonymous volume for node_modules, because the server has no dependencies (yet).
           - ./server:/app
+          - /app/node_modules
         ports:
             - "3000:3000"
