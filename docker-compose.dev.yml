@@ -31,3 +31,7 @@ services:
           - /app/node_modules
         ports:
             - "3000:3000"
+        command:
+          # The only difference between a dev and prod environment is the command used to start the app.
+          # Use the same Dockerfile, but overwrite its command.
+          npm run watch
