@@ -19,7 +19,10 @@ Each docker-compose file contains a description on the very top.
 Below is a short list of available files.
 
 #### docker-compose.yml
-The default file. Spins up the app for local development.
+The default file. Starts the app optimized for production use.
+
+#### docker-compose.dev.yml
+Spins up the app for local development. Tailored for quick builds and local code changes.
 
 #### docker-compose.test.yml
 Allows running end-to-end tests with a single command.

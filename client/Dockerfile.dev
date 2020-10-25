@@ -1,0 +1,23 @@
+FROM node:14-alpine
+
+# make the 'app' folder the current working directory
+WORKDIR /app
+
+# copy both 'package.json' and 'package-lock.json' (if available)
+COPY package.json package-lock.json ./
+
+# install project dependencies
+RUN npm install
+
+# copy project files and folders to the current working directory (i.e. 'app' folder)
+COPY . .
+
+EXPOSE 8080
+
+# Use an npm script to serve a development version of the app.
+# As opposed to a production variant, this one builds quickly and doesn't
+# uglify source files.
+# The `serve` command watches source files. Whenever you modify a file,
+# it will rebuild the app, assuming the image can see your changes. See
+# docker-compose.dev.yml for details.
+CMD [ "npm", "run", "serve" ]
