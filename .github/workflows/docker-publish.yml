@@ -22,13 +22,8 @@ jobs:
 
       - name: Run tests
         run: |
-          if [ -f docker-compose.test.yml ]; then
             docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml run sut
-          else
-            docker build ./server --file server/Dockerfile
-            docker build ./client --file client/Dockerfile
-          fi
+            docker-compose --file docker-compose.test.yml up --exit-code-from tests
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/

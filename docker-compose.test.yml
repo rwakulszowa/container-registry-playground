@@ -1,0 +1,16 @@
+# docker-compose file for running tests.
+# Spins up the project and a separate container with a test runner.
+# Run
+# `docker-compose up --file docker-compose.test.yml --exit-code-from tests`
+# to execute the tests and get the results back.
+#
+# To keep the file simple, no volumes are mounted. It means, however, that you must
+# rebuild the image after introducing any changes, or else they will not be visible from the image.
+# TLDR: if you edit some code locally, remember to run
+# `docker-compose build --file docker-compose.test.yml`
+version: "3.8"
+services:
+    tests:
+        build:
+            context: ./tests/
+            dockerfile: Dockerfile
