@@ -36,7 +36,8 @@ jobs:
     needs: test
 
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    # Do not push on forks.
+    if: github.event_name == 'push' && github.repository == 'rwakulszowa/container-registry-playground'
 
     steps:
       - uses: actions/checkout@v2
@@ -74,7 +75,7 @@ jobs:
     needs: test
 
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.repository == 'rwakulszowa/container-registry-playground'
 
     steps:
       - uses: actions/checkout@v2
