@@ -24,22 +24,22 @@ jobs:
 
       - name: Build core components
         run: |
-            docker-compose --file docker-compose.test.yml build
+            docker-compose --file docker-compose.prod.yml build
 
       - name: Run unit tests
         run: |
-            docker-compose --file docker-compose.yml run server npm test
-            docker-compose --file docker-compose.yml run client npm test
+            docker-compose --file docker-compose.prod.yml run server npm test
+            docker-compose --file docker-compose.prod.yml run client npm test
 
       # Build the runner *after* unit testing. If unit tests fail, integration tests most likely
       # will fail as well, so there's no point running them.
       - name: Build integrtion test runner
         run: |
-            docker-compose --file docker-compose.test.yml build
+            docker-compose --file docker-compose.prod.yml --file docker-compose.test.yml build
 
       - name: Run integration tests
         run: |
-            docker-compose --file docker-compose.test.yml --file docker-compose.yml up --exit-code-from tests
+            docker-compose --file docker-compose.prod.yml --file docker-compose.test.yml up --exit-code-from tests
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/

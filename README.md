@@ -25,17 +25,17 @@ Locally changes to the source files will be instantly* reflected in the app.
 #### Running unit tests
 - client/
 ```
-docker-compose --file docker-compose.dev.yml exec client-dev npm test
+docker-compose --file docker-compose.yml exec client-dev npm test
 ```
 - server/
 ```
-docker-compose --file docker-compose.dev.yml exec server-dev npm test
+docker-compose --file docker-compose.yml exec server-dev npm test
 ```
 
 #### Linting / formatting source code.
 - client/
 ```
-docker-compose --file docker-compose.dev.yml exec client-dev npm run lint
+docker-compose --file docker-compose.yml exec client-dev npm run lint
 ```
 - server/
 ```
@@ -47,7 +47,7 @@ without ever explicitly installing prettier, Node, or any other tool but docker.
 
 #### Any other command you wish to execute
 ```
-docker-compose --file docker-compose.dev.yml exec [client,server]-dev <command>
+docker-compose --file docker-compose.yml exec [client,server]-dev <command>
 ```
 
 ## How to use
@@ -58,10 +58,10 @@ Each docker-compose file contains a description on the very top.
 Below is a short list of available files.
 
 #### docker-compose.yml
-The default file. Starts the app optimized for production use.
-
-#### docker-compose.dev.yml
 Spins up the app for local development. Tailored for quick builds and local code changes.
+
+#### docker-compose.prod.yml
+Starts the app optimized for production use.
 
 #### docker-compose.test.yml
 Allows running end-to-end tests with a single command.
