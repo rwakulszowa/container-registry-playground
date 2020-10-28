@@ -39,6 +39,8 @@ export default {
 
       await sleep(1000);
 
+      // Refer to the docker-compose name of the service.
+      // Using "localhost" would not work, as each container defines its own "localhost".
       const response = await fetch("http://localhost:3000");
       console.log(`Got a response: ${JSON.stringify(response)}`);
       this.serverMessage = "decoding...";

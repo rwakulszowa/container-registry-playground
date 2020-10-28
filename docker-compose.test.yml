@@ -17,3 +17,6 @@ services:
         build:
             context: ./tests/
             dockerfile: Dockerfile
+        depends_on:
+          - server
+          - client
