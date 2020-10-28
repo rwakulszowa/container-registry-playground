@@ -14,15 +14,28 @@ env:
 jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
+  # The workflow uses a production compose file for core components, and a separate
+  # compose file for an integraion test runner.
   test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build images
+      - name: Build core components
         run: |
-            docker-compose --file docker-compose.test.yml --file docker-compose.yml build
+            docker-compose --file docker-compose.test.yml build
+
+      - name: Run unit tests
+        run: |
+            docker-compose --file docker-compose.yml run server npm test
+            docker-compose --file docker-compose.yml run client npm test
+
+      # Build the runner *after* unit testing. If unit tests fail, integration tests most likely
+      # will fail as well, so there's no point running them.
+      - name: Build integrtion test runner
+        run: |
+            docker-compose --file docker-compose.test.yml build
 
       - name: Run integration tests
         run: |
