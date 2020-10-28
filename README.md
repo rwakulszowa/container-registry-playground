@@ -25,17 +25,17 @@ Locally changes to the source files will be instantly* reflected in the app.
 #### Running unit tests
 - client/
 ```
-docker-compose --file docker-compose.yml exec client-dev npm test
+docker-compose --file docker-compose.yml exec client npm test
 ```
 - server/
 ```
-docker-compose --file docker-compose.yml exec server-dev npm test
+docker-compose --file docker-compose.yml exec server npm test
 ```
 
 #### Linting / formatting source code.
 - client/
 ```
-docker-compose --file docker-compose.yml exec client-dev npm run lint
+docker-compose --file docker-compose.yml exec client npm run lint
 ```
 - server/
 ```
@@ -47,7 +47,7 @@ without ever explicitly installing prettier, Node, or any other tool but docker.
 
 #### Any other command you wish to execute
 ```
-docker-compose --file docker-compose.yml exec [client,server]-dev <command>
+docker-compose --file docker-compose.yml exec [client,server] <command>
 ```
 
 ## How to use

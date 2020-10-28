@@ -3,7 +3,7 @@
 # Rebuilds the app upon detecting source code changes.
 version: "3.8"
 services:
-    client-dev:
+    client:
         build:
             context: ./client/
             # use the .dev image definition. It is well suited for local development.
@@ -20,13 +20,13 @@ services:
           - /app/node_modules
         ports:
             - "8080:8080"
-    server-dev:
+    server:
         build:
             context: ./server/
             dockerfile: Dockerfile
         volumes:
           # Same as above.
-          # See comments in client-dev for details.
+          # See comments in client for details.
           - ./server:/app
           - /app/node_modules
         ports:
