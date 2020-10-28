@@ -65,3 +65,6 @@ Spins up the app for local development. Tailored for quick builds and local code
 
 #### docker-compose.test.yml
 Allows running end-to-end tests with a single command.
+Note, that this file defines only test-specific services. It is meant to be ran
+on top of another docker-compose file.
+See [docker-compose reference](https://docs.docker.com/compose/extends/) for details.

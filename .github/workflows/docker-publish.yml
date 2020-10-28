@@ -20,10 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run tests
+      - name: Build images
         run: |
-            docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml up --exit-code-from tests
+            docker-compose --file docker-compose.test.yml --file docker-compose.yml build
+
+      - name: Run integration tests
+        run: |
+            docker-compose --file docker-compose.test.yml --file docker-compose.yml up --exit-code-from tests
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
