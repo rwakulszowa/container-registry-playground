@@ -13,6 +13,12 @@
 # `docker-compose build --file docker-compose.prod.yml --file docker-compose.test.yml`
 version: "3.8"
 services:
+    client:
+        build:
+            args:
+                ENV_FILE: .env.test
+        ports:
+            - "8080:8080"
     tests:
         build:
             context: ./tests/

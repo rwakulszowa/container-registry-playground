@@ -15,6 +15,9 @@ async function sleep(milliseconds) {
   });
 }
 
+const API_URL = process.env.VUE_APP_API_URL;
+console.log(process.env);
+
 export default {
   name: "Henlo",
   props: {
@@ -41,7 +44,7 @@ export default {
 
       // Refer to the docker-compose name of the service.
       // Using "localhost" would not work, as each container defines its own "localhost".
-      const response = await fetch("http://localhost:3000");
+      const response = await fetch(API_URL);
       console.log(`Got a response: ${JSON.stringify(response)}`);
       this.serverMessage = "decoding...";
 
